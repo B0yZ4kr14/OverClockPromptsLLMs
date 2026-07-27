@@ -229,4 +229,3 @@ A formalização aqui deduzida — grafo dirigido ponderado, dinâmica laplacian
 [^rec10]: Fórmula reconstruída a partir do contexto; no manuscrito original, exibida como imagem. Os mapas divergem entre $S \cup \{s\} \cup \{s\} = S \cup \{s\}$ e $S \cup S = S$; adotou-se a primeira, mais precisa quanto à reinjeção de um estado individual.
 
 ---
-
