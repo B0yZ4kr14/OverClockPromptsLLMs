@@ -33,8 +33,7 @@
     },
     "uniqueness": {
       "score": 100.0,
-      "issues": [],
-      "note": "未检测到 ID 类列，跳过唯一性检查"
+      "issues": []
     },
     "whitespace": {
       "score": 100.0,
