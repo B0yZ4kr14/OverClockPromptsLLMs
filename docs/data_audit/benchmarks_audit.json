@@ -1,0 +1,173 @@
+{
+  "file": "benchmarks.json",
+  "rows": 45,
+  "columns": 9,
+  "column_list": [
+    "cat",
+    "name",
+    "kimi",
+    "gpt52",
+    "claude45",
+    "gemini3",
+    "deepseek",
+    "qwen3vl",
+    "hl"
+  ],
+  "overall_score": 85.96,
+  "grade": "B",
+  "dimensions": {
+    "missing_values": {
+      "score": 73.09,
+      "issues": [
+        {
+          "column": "gpt52",
+          "missing_count": 10,
+          "missing_pct": 22.22,
+          "suggestion": "建议用众数「100」填充，或标记为专用缺失标识"
+        },
+        {
+          "column": "claude45",
+          "missing_count": 4,
+          "missing_pct": 8.89,
+          "suggestion": "建议用众数「3*」填充，或标记为专用缺失标识"
+        },
+        {
+          "column": "gemini3",
+          "missing_count": 5,
+          "missing_pct": 11.11,
+          "suggestion": "建议用众数「12*」填充，或标记为专用缺失标识"
+        },
+        {
+          "column": "deepseek",
+          "missing_count": 22,
+          "missing_pct": 48.89,
+          "suggestion": "建议用众数「17.3*」填充，或标记为专用缺失标识"
+        },
+        {
+          "column": "qwen3vl",
+          "missing_count": 27,
+          "missing_pct": 60.0,
+          "suggestion": "建议用众数「23.5」填充，或标记为专用缺失标识"
+        },
+        {
+          "column": "hl",
+          "missing_count": 41,
+          "missing_pct": 91.11,
+          "suggestion": "建议用中位数(1)或均值填充"
+        }
+      ]
+    },
+    "duplicates": {
+      "score": 100.0,
+      "issues": []
+    },
+    "type_consistency": {
+      "score": 55.56,
+      "issues": [
+        {
+          "column": "gpt52",
+          "numeric_values": 22,
+          "non_numeric_values": 13,
+          "suggestion": "有 13 个值无法转为数字，其余均为数字，建议清洗后转为数值类型"
+        },
+        {
+          "column": "gemini3",
+          "numeric_values": 21,
+          "non_numeric_values": 19,
+          "suggestion": "有 19 个值无法转为数字，其余均为数字，建议清洗后转为数值类型"
+        },
+        {
+          "column": "deepseek",
+          "numeric_values": 13,
+          "non_numeric_values": 10,
+          "suggestion": "有 10 个值无法转为数字，其余均为数字，建议清洗后转为数值类型"
+        },
+        {
+          "column": "qwen3vl",
+          "numeric_values": 12,
+          "non_numeric_values": 6,
+          "suggestion": "有 6 个值无法转为数字，其余均为数字，建议清洗后转为数值类型"
+        }
+      ]
+    },
+    "value_range": {
+      "score": 50.0,
+      "issues": [
+        {
+          "column": "kimi",
+          "outlier_count": 2,
+          "outlier_pct": 4.44,
+          "range": {
+            "min": 9.0,
+            "max": 96.1
+          },
+          "iqr_bounds": {
+            "lower": 20.95,
+            "upper": 122.15
+          },
+          "suggestion": "2 个值超出 IQR 范围 [20.95, 122.2]，建议检查是否为录入错误或截断处理"
+        }
+      ]
+    },
+    "format_compliance": {
+      "score": 100.0,
+      "issues": []
+    },
+    "uniqueness": {
+      "score": 100.0,
+      "issues": [],
+      "note": "未检测到 ID 类列，跳过唯一性检查"
+    },
+    "whitespace": {
+      "score": 100.0,
+      "issues": []
+    },
+    "constant_columns": {
+      "score": 88.89,
+      "issues": [
+        {
+          "column": "hl",
+          "unique_values": 1,
+          "constant_value": "1.0",
+          "suggestion": "列「hl」仅有 1 个唯一值（1.0），信息量为零，建议删除"
+        }
+      ]
+    },
+    "distribution_skew": {
+      "score": 100.0,
+      "issues": [
+        {
+          "column": "kimi",
+          "skewness": -1.2399,
+          "direction": "轻度左偏",
+          "suggestion": "偏度 = -1.24，分布略有偏斜，如做回归分析可考虑变换"
+        }
+      ]
+    },
+    "column_naming": {
+      "score": 100.0,
+      "issues": []
+    },
+    "cardinality": {
+      "score": 100.0,
+      "issues": []
+    },
+    "cross_column": {
+      "score": 100.0,
+      "issues": [],
+      "note": "未检测到可校验的列对组合，跳过跨列检查"
+    }
+  },
+  "top_suggestions": [
+    "建议用众数「100」填充，或标记为专用缺失标识",
+    "建议用众数「3*」填充，或标记为专用缺失标识",
+    "建议用众数「12*」填充，或标记为专用缺失标识",
+    "建议用众数「17.3*」填充，或标记为专用缺失标识",
+    "建议用众数「23.5」填充，或标记为专用缺失标识",
+    "建议用中位数(1)或均值填充",
+    "有 13 个值无法转为数字，其余均为数字，建议清洗后转为数值类型",
+    "有 19 个值无法转为数字，其余均为数字，建议清洗后转为数值类型",
+    "有 10 个值无法转为数字，其余均为数字，建议清洗后转为数值类型",
+    "有 6 个值无法转为数字，其余均为数字，建议清洗后转为数值类型"
+  ]
+}

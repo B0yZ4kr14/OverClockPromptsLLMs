@@ -1,0 +1,70 @@
+{
+  "file": "canonical_graph_nodes.json",
+  "rows": 4,
+  "columns": 4,
+  "column_list": [
+    "id",
+    "role",
+    "entropy_budget",
+    "label"
+  ],
+  "overall_score": 99.06,
+  "grade": "A+",
+  "dimensions": {
+    "missing_values": {
+      "score": 93.75,
+      "issues": [
+        {
+          "column": "entropy_budget",
+          "missing_count": 1,
+          "missing_pct": 25.0,
+          "suggestion": "建议用中位数(0.08)或均值填充"
+        }
+      ]
+    },
+    "duplicates": {
+      "score": 100.0,
+      "issues": []
+    },
+    "type_consistency": {
+      "score": 100.0,
+      "issues": []
+    },
+    "format_compliance": {
+      "score": 100.0,
+      "issues": []
+    },
+    "uniqueness": {
+      "score": 100.0,
+      "issues": []
+    },
+    "whitespace": {
+      "score": 100.0,
+      "issues": []
+    },
+    "constant_columns": {
+      "score": 100.0,
+      "issues": []
+    },
+    "distribution_skew": {
+      "score": 100.0,
+      "issues": []
+    },
+    "column_naming": {
+      "score": 100.0,
+      "issues": []
+    },
+    "cardinality": {
+      "score": 100.0,
+      "issues": []
+    },
+    "cross_column": {
+      "score": 100.0,
+      "issues": [],
+      "note": "未检测到可校验的列对组合，跳过跨列检查"
+    }
+  },
+  "top_suggestions": [
+    "建议用中位数(0.08)或均值填充"
+  ]
+}

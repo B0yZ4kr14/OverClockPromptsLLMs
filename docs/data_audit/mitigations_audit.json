@@ -1,0 +1,68 @@
+{
+  "file": "mitigations.json",
+  "rows": 9,
+  "columns": 6,
+  "column_list": [
+    "strategy",
+    "layer",
+    "mechanism",
+    "evidence",
+    "src",
+    "group"
+  ],
+  "overall_score": 100.0,
+  "grade": "A+",
+  "dimensions": {
+    "missing_values": {
+      "score": 100.0,
+      "issues": []
+    },
+    "duplicates": {
+      "score": 100.0,
+      "issues": []
+    },
+    "type_consistency": {
+      "score": 100.0,
+      "issues": []
+    },
+    "value_range": {
+      "score": 100.0,
+      "issues": []
+    },
+    "format_compliance": {
+      "score": 100.0,
+      "issues": []
+    },
+    "uniqueness": {
+      "score": 100.0,
+      "issues": [],
+      "note": "未检测到 ID 类列，跳过唯一性检查"
+    },
+    "whitespace": {
+      "score": 100.0,
+      "issues": []
+    },
+    "constant_columns": {
+      "score": 100.0,
+      "issues": []
+    },
+    "distribution_skew": {
+      "score": 100.0,
+      "issues": []
+    },
+    "column_naming": {
+      "score": 100.0,
+      "issues": []
+    },
+    "cardinality": {
+      "score": 100.0,
+      "issues": []
+    },
+    "cross_column": {
+      "score": 100.0,
+      "issues": [],
+      "note": "未检测到可校验的列对组合，跳过跨列检查"
+    }
+  },
+  "top_suggestions": []
+}

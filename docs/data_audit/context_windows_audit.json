@@ -1,0 +1,93 @@
+{
+  "file": "context_windows.json",
+  "rows": 10,
+  "columns": 6,
+  "column_list": [
+    "model",
+    "date",
+    "tokens",
+    "label",
+    "note",
+    "src"
+  ],
+  "overall_score": 85.0,
+  "grade": "B",
+  "dimensions": {
+    "missing_values": {
+      "score": 100.0,
+      "issues": []
+    },
+    "duplicates": {
+      "score": 100.0,
+      "issues": []
+    },
+    "type_consistency": {
+      "score": 100.0,
+      "issues": []
+    },
+    "value_range": {
+      "score": 0.0,
+      "issues": [
+        {
+          "column": "tokens",
+          "outlier_count": 1,
+          "outlier_pct": 10.0,
+          "range": {
+            "min": 4096.0,
+            "max": 10000000.0
+          },
+          "iqr_bounds": {
+            "lower": -1152500.0,
+            "upper": 2291500.0
+          },
+          "suggestion": "1 个值超出 IQR 范围 [-1.152e+06, 2.292e+06]，建议检查是否为录入错误或截断处理"
+        }
+      ]
+    },
+    "format_compliance": {
+      "score": 100.0,
+      "issues": []
+    },
+    "uniqueness": {
+      "score": 100.0,
+      "issues": [],
+      "note": "未检测到 ID 类列，跳过唯一性检查"
+    },
+    "whitespace": {
+      "score": 100.0,
+      "issues": []
+    },
+    "constant_columns": {
+      "score": 100.0,
+      "issues": []
+    },
+    "distribution_skew": {
+      "score": 0.0,
+      "issues": [
+        {
+          "column": "tokens",
+          "skewness": 3.0402,
+          "direction": "右偏（正偏）",
+          "suggestion": "偏度 = 3.04（右偏（正偏）），分布极度不对称，建议 log 变换或 Box-Cox 变换"
+        }
+      ]
+    },
+    "column_naming": {
+      "score": 100.0,
+      "issues": []
+    },
+    "cardinality": {
+      "score": 100.0,
+      "issues": []
+    },
+    "cross_column": {
+      "score": 100.0,
+      "issues": [],
+      "note": "未检测到可校验的列对组合，跳过跨列检查"
+    }
+  },
+  "top_suggestions": [
+    "1 个值超出 IQR 范围 [-1.152e+06, 2.292e+06]，建议检查是否为录入错误或截断处理",
+    "偏度 = 3.04（右偏（正偏）），分布极度不对称，建议 log 变换或 Box-Cox 变换"
+  ]
+}
