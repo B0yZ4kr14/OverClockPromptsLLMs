@@ -1,10 +1,3 @@
-# A Matemática Inevitável dos LLMs
-## Da Estocasticidade Lexical à Orquestração Multi-Agente
-
-*Obra consolidada a partir dos manuscritos do autor — 26 de julho de 2026*
-
----
-
 # Introdução
 
 Esta obra sustenta uma tese única, demonstrada em quatro movimentos encadeados: a operação dos grandes modelos de linguagem (Large Language Models — LLMs) e de seus ecossistemas multi-agente não é um fenômeno linguístico, mas uma orquestração matemática determinística e teleológica, cuja eficiência obedece ao postulado praxeológico da máxima assertividade com o mínimo de meios. A linguagem natural é a camada de interface; nos bastidores, tudo se reduz a álgebra linear multivariada, cálculo tensorial e teoria das probabilidades — do sorteio estocástico de cada token, governado pela função Softmax com temperatura, à coordenação de enxames de agentes por grafos dirigidos ponderados. O método adotado ao longo dos capítulos é o que o corpus de origem denominou "prova dos noves": cada tese verbal é submetida à sua formulação matemática correspondente, e cada fórmula é confrontada com evidência empírica mensurável, de modo que o leitor possa reproduzir o encadeamento completo, postulado a postulado. Separa-se, com rigor deliberado, o que pertence ao conhecimento estabelecido da arquitetura Transformer — as equações de atenção, amostragem e complexidade — do que constitui tese interpretativa do autor: a leitura praxeológica (Ludwig von Mises), socrática e falsificacionista (Karl Popper) dessas mesmas equações.
@@ -16,4 +9,3 @@ Uma palavra de honestidade metodológica impõe-se quanto à gênese do texto. E
 O roteiro de leitura segue a lógica da prova. A Parte I estabelece os fundamentos: a mecânica estocástica da tokenização, a restrição deliberada do espaço latente, a utilidade marginal do cálculo e a teoria matemática da falha — alucinação como divergência de Kullback-Leibler mensurável, contida por falsificabilidade popperiana. A Parte II disseca a janela de contexto: a diluição atencional, a curva em U, o Teorema da Janela Efetiva e o arsenal de mitigação do RAG otimizado. A Parte III formaliza a resposta arquitetural: o orquestrador multi-agente como grafo dirigido ponderado, com dinâmica laplaciana do estado, validação adversária em dois estágios e registro canônico idempotente. A Parte IV submete tudo à prova empírica: o estudo de caso do Kimi K2.5, cuja engenharia documentada — janela de 256K disciplinada por gestão ativa de contexto, atenção comprimida em espaço latente, especialistas ativados seletivamente e enxame orquestrado contra o colapso serial — confirma que a trajetória deduzida pela álgebra e pela epistemologia descreve a direção efetiva da arquitetura de LLMs.
 
 ---
-
