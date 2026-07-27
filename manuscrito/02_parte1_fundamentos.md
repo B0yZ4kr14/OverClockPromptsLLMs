@@ -69,4 +69,3 @@ A falsificabilidade alcança seu grau máximo de formalização na infraestrutur
 A "prova dos noves" da Parte I está, assim, fechada: do sorteio do token à orquestração de *clusters*, o aprimoramento contínuo reduz-se irrevogavelmente a cálculos exatos, e a eliminação da subjetividade forja sistemas em que a tecnologia dos bastidores nada mais é do que a matemática traduzindo o imperativo da eficiência absoluta. Mas há um ponto da arquitetura em que essa inevitabilidade se manifesta com evidência máxima, porque nele convergem os três eixos demonstrados até aqui — a escassez do recurso, o custo quadrático da atenção e a economicidade marginal do cálculo: a janela de contexto. Se nesta Parte ela foi definida como limite dimensional exato, é na condição de recurso escasso disputado token a token que ela revela seu comportamento mais contra intuitivo — e é essa anatomia que a Parte II disseca a seguir.
 
 ---
-
