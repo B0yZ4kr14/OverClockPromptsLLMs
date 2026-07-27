@@ -1,0 +1,236 @@
+/* site.css — camada específica do site (o invariante está em style.css) */
+
+/* Plates figurais da obra — PNGs têm fundo branco próprio: moldura clara deliberada
+   (#faf8f2 + borda) — "ilhas de exibição" sobre o fundo escuro fosco */
+.fig-plate { margin: 26px 0 30px; }
+.fig-plate img { display: block; width: 100%; height: auto; background: #faf8f2; border: 1px solid rgba(236,231,219,.28); padding: 14px; }
+.fig-plate figcaption { font-size: 13px; color: var(--ink-md); line-height: 1.65; margin-top: 10px; padding-top: 8px; border-top: 1.5px solid var(--ink); }
+
+/* Placa JSON (CanonicalGraphState) */
+.json-plate {
+  font-family: var(--mono); font-size: 11.5px; line-height: 1.62; color: var(--ink);
+  background: var(--paper-hi); border-top: 2px solid var(--ink); border-bottom: 1px solid var(--line);
+  padding: 18px 20px; margin: 18px 0 22px; overflow-x: auto; white-space: pre; tab-size: 2;
+}
+.json-plate .jk { color: var(--red-hi); }
+.json-plate .jv { color: var(--ink); font-weight: 700; }
+.json-plate .jc { color: var(--ink-lo); }
+
+/* Controles interativos (sliders) dos laboratórios */
+.ctl-row { display: flex; flex-wrap: wrap; gap: 18px 26px; align-items: center; margin: 10px 0 6px; font-family: var(--mono); font-size: 10.5px; color: var(--ink-md); letter-spacing: .04em; }
+.ctl-row label { display: flex; align-items: center; gap: 8px; text-transform: uppercase; }
+.ctl-row input[type="range"] { width: 150px; accent-color: var(--red); }
+.ctl-row .ctl-val { color: var(--red); font-weight: 700; min-width: 44px; display: inline-block; }
+
+/* Tabelas densas (modelos / mitigações) */
+table.dt td .cell-note { display: block; font-size: 11.5px; color: var(--ink-lo); line-height: 1.5; }
+table.dt tr[data-drill-row] { cursor: pointer; }
+table.dt td.num .neg { color: var(--neg); }
+
+/* Matriz de benchmarks */
+.bench-wrap { overflow-x: auto; }
+table.bench { border-collapse: collapse; width: 100%; min-width: 860px; }
+table.bench th, table.bench td { font-family: var(--mono); font-size: 10.5px; padding: 5px 7px; border-bottom: 1px solid var(--line-lo); text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+table.bench th { font-size: 9px; letter-spacing: .05em; text-transform: uppercase; color: var(--ink-lo); border-bottom: 1.5px solid var(--ink); vertical-align: bottom; }
+table.bench th:first-child, table.bench td:first-child { text-align: left; font-family: var(--serif); font-size: 12.5px; }
+table.bench td.cell { cursor: pointer; }
+table.bench td.cell:hover { outline: 1.5px solid var(--red); outline-offset: -1.5px; }
+table.bench td.kimi { font-weight: 700; }
+table.bench tr.hl-row td { background: rgba(125,155,255,.1); }
+table.bench tr.cat-row td { font-family: var(--mono); font-size: 9.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--red); background: var(--paper-hi); border-bottom: 1px solid var(--line); padding-top: 12px; }
+.bench-legend { font-family: var(--mono); font-size: 9.5px; color: var(--ink-lo); margin-top: 8px; line-height: 1.9; }
+.bench-legend .sw { display: inline-block; width: 10px; height: 10px; vertical-align: -1px; margin: 0 4px 0 12px; border: 1px solid var(--line); }
+
+/* SVGs compartilhados */
+.chart-frame svg text { font-family: var(--mono); }
+.svg-halo { paint-order: stroke; stroke: var(--paper); stroke-width: 4px; stroke-linejoin: round; }
+.drillable { cursor: pointer; }
+.drillable:hover { opacity: .82; }
+svg .drillable:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; opacity: 1; }
+
+@media (max-width: 1180px) {
+  table.bench { min-width: 780px; }
+}
+
+/* ── Autor: byline da capa + bloco de Créditos ── */
+
+/* Byline da capa — linha editorial discreta entre o dek e o lede.
+   Avatar circular 44px: borda fina marfim 25% + anel externo azul 20% (box-shadow,
+   não ocupa caixa). width/height declarados no HTML: caixa fixa, CLS zero. */
+.cover-byline { display: flex; align-items: center; gap: 13px; margin: -8px 0 24px; }
+.cover-byline img {
+  width: 44px; height: 44px; border-radius: 50%; object-fit: cover;
+  border: 1px solid rgba(236,231,219,.25);
+  box-shadow: 0 0 0 3px rgba(125,155,255,.2);
+  flex: 0 0 auto;
+}
+.byline-txt { min-width: 0; }
+.byline-name { font-family: var(--serif); font-size: 16px; line-height: 1.3; margin: 0; }
+.byline-name .by-por { font-style: italic; color: var(--ink-md); margin-right: 4px; }
+.byline-name strong { font-weight: 700; color: var(--ink); }
+.byline-cap {
+  font-family: var(--mono); font-size: 9px; letter-spacing: .18em;
+  color: var(--ink-lo); margin: 3px 0 0; text-transform: uppercase;
+}
+/* Mobile: a capa é alinhada à esquerda; a linha (44px + texto curto) cabe em 390px —
+   mantém-se em linha única, com wrap de segurança, sem quebrar o ritmo vertical */
+@media (max-width: 600px) {
+  .cover-byline { flex-wrap: wrap; gap: 10px; margin: -4px 0 22px; }
+}
+
+/* Bloco de Créditos (colofão) — prosa editorial sóbria, sem card colorido:
+   avatar 88px circular à esquerda + assinatura serif, papel e nota mono.
+   Mesma gramática de borda do byline; object-fit preserva o enquadramento quadrado. */
+.credits-block {
+  display: flex; align-items: center; gap: 22px;
+  margin: 6px 0 10px; padding: 22px 0 6px;
+  border-top: 1px solid var(--line-lo);
+}
+.credits-block img {
+  width: 88px; height: 88px; border-radius: 50%; object-fit: cover;
+  border: 1px solid rgba(236,231,219,.25);
+  box-shadow: 0 0 0 3px rgba(125,155,255,.2);
+  flex: 0 0 auto;
+}
+.credits-txt { min-width: 0; }
+.credits-name { font-family: var(--serif); font-size: 1.1rem; font-weight: 700; color: var(--ink); margin: 0 0 2px; }
+.credits-role { font-size: 14px; color: var(--ink-md); line-height: 1.55; margin: 0 0 8px; }
+.credits-note {
+  font-family: var(--mono); font-size: 9.5px; letter-spacing: .12em;
+  color: var(--ink-lo); line-height: 1.9; margin: 0; text-transform: uppercase;
+}
+@media (max-width: 600px) {
+  .credits-block { align-items: flex-start; gap: 16px; }
+}
+
+/* ── Onda 1 · conteúdo + interatividade ── */
+
+/* Notas de rodapé inline: superscript mono azul com tooltip/drill */
+.fnref {
+  font-family: var(--mono); font-size: 10px; color: var(--red);
+  cursor: pointer; border-bottom: 1px dashed var(--red); padding: 0 1px;
+  line-height: 0; vertical-align: super;
+}
+.fnref:hover { color: var(--red-hi); border-bottom-color: var(--red-hi); }
+
+/* Glossário do Apêndice — grade editorial sóbria, duas colunas */
+.glossary { display: grid; grid-template-columns: 1fr 1fr; column-gap: 44px; margin: 6px 0 10px; }
+.glossary > div { padding: 10px 0 11px; border-bottom: 1px solid var(--line-lo); }
+.glossary dt { font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ink); }
+.glossary dd { font-size: 13.5px; color: var(--ink-md); line-height: 1.6; margin-top: 3px; }
+@media (max-width: 760px) { .glossary { grid-template-columns: 1fr; } }
+
+/* Busca textual discreta (topo esquerdo, mono) */
+#search-box { position: fixed; top: 14px; left: 16px; z-index: 210; }
+#search-input {
+  width: 208px; font-family: var(--mono); font-size: 11px; letter-spacing: .06em;
+  color: var(--ink); background: rgba(43,40,35,.94); border: 1px solid var(--line);
+  border-radius: 4px; padding: 6px 10px; outline: none;
+}
+#search-input:focus { border-color: var(--red); }
+#search-input::placeholder { color: var(--ink-lo); }
+#search-results {
+  margin-top: 4px; background: var(--paper-hi); border: 1px solid var(--line);
+  border-radius: 4px; box-shadow: var(--shadow); max-width: 320px; overflow: hidden;
+}
+#search-results .sr {
+  display: block; width: 100%; text-align: left; background: none; border: 0;
+  border-bottom: 1px solid var(--line-lo); padding: 7px 10px; cursor: pointer;
+  font-family: var(--mono); font-size: 10.5px; color: var(--ink); line-height: 1.5;
+}
+#search-results .sr:last-child { border-bottom: 0; }
+#search-results .sr:hover { background: rgba(125,155,255,.14); }
+#search-results .sr .k { color: var(--red); font-size: 8.5px; letter-spacing: .14em; margin-right: 6px; }
+#search-results .sr-none { padding: 8px 10px; font-family: var(--mono); font-size: 10px; color: var(--ink-lo); }
+@media (max-width: 720px) { #search-input { width: 148px; } }
+
+/* Alvo destacado temporariamente (busca / deep-link) */
+@keyframes flashHit {
+  0% { box-shadow: 0 0 0 0 rgba(125,155,255,0); }
+  25% { box-shadow: 0 0 0 3px rgba(125,155,255,.6); }
+  100% { box-shadow: 0 0 0 0 rgba(125,155,255,0); }
+}
+.flash-hit { animation: flashHit 1.6s ease-out 1; border-radius: 3px; }
+@media (prefers-reduced-motion: reduce) {
+  .flash-hit { animation: none; outline: 2px solid var(--red); outline-offset: 3px; }
+}
+
+/* Comparador de modelos (Parte IV) — barras pareadas por categoria */
+.cmp-controls {
+  display: flex; gap: 18px; flex-wrap: wrap; align-items: center;
+  margin: 4px 0 12px; font-family: var(--mono); font-size: 10.5px;
+  color: var(--ink-md); letter-spacing: .04em; text-transform: uppercase;
+}
+.cmp-controls label { display: flex; align-items: center; gap: 8px; }
+.cmp-controls select {
+  font-family: var(--mono); font-size: 11px; color: var(--ink);
+  background: var(--paper-hi); border: 1px solid var(--line); border-radius: 4px; padding: 5px 8px;
+}
+.cmp-row { display: grid; grid-template-columns: 148px 1fr 86px; gap: 12px; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--line-lo); }
+.cmp-row:first-of-type { border-top: 1px solid var(--line-lo); }
+.cmp-cat { font-family: var(--mono); font-size: 9.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-md); line-height: 1.55; }
+.cmp-bars { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+.cmp-bar { display: flex; align-items: center; gap: 8px; cursor: pointer; }
+.cmp-bar .bar { height: 10px; border-radius: 1px; flex: 0 0 auto; }
+.cmp-bar.a .bar { background: var(--red); }
+.cmp-bar.b .bar { background: var(--ink); }
+.cmp-bar.na .bar { background: transparent; border: 1px dashed var(--line); }
+.cmp-bar .bv { font-family: var(--mono); font-size: 10px; color: var(--ink-md); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.cmp-bar:hover .bv { color: var(--red); }
+.cmp-delta { font-family: var(--mono); font-size: 11.5px; font-weight: 700; text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.cmp-legend { font-family: var(--mono); font-size: 9.5px; color: var(--ink-lo); margin-top: 10px; line-height: 1.9; }
+@media (max-width: 720px) { .cmp-row { grid-template-columns: 104px 1fr 70px; gap: 8px; } }
+
+/* ── Onda 2 · responsividade, motion e acessibilidade ── */
+
+/* Tabelas densas: scroll horizontal contido em telas estreitas */
+.dt-scroll { max-width: 100%; }
+@media (max-width: 768px) {
+  .dt-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .dt-scroll > table.dt { min-width: 560px; }
+}
+
+/* Canvas/SVG de gráficos: em telas estreitas, scroll contido com largura mínima
+   (mantém rótulos legíveis em vez de esmagar o desenho a 0,38×) */
+@media (max-width: 700px) {
+  .chart-scroll {
+    overflow-x: auto; -webkit-overflow-scrolling: touch;
+    /* affordance de scroll: véu na borda direita */
+    background: linear-gradient(to left, rgba(32,29,25,.9), rgba(32,29,25,0) 34px);
+    background-repeat: no-repeat; background-position: right center;
+  }
+  .chart-scroll > canvas, .chart-scroll > svg { min-width: 660px; }
+  /* véu de fade SOBRE o conteúdo cortado (o background fica atrás do SVG/canvas):
+     ancora no .chart-frame, que não rola — sempre colado na borda visível direita */
+  .chart-frame.has-scroll { position: relative; }
+  .chart-frame.has-scroll::after {
+    content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 38px;
+    background: linear-gradient(to left, rgba(32,29,25,.96), rgba(32,29,25,0));
+    pointer-events: none;
+  }
+}
+
+/* Entradas por IntersectionObserver: stagger curto e consistente (220ms + 45ms/item).
+   A classe .rv só é aplicada via JS quando NÃO há prefers-reduced-motion —
+   em reduced-motion o conteúdo nasce no estado final estático. */
+.rv { opacity: 0; transform: translateY(10px); transition: opacity .22s ease, transform .22s ease; }
+.rv.in { opacity: 1; transform: none; }
+
+/* Micro-interações aditivas (150–250ms, sem sombras pesadas) */
+.cmp-controls select { cursor: pointer; transition: border-color .15s ease, background-color .15s ease; }
+.cmp-controls select:hover { border-color: var(--ink); }
+.cmp-bar { transition: opacity .15s ease; }
+.cmp-bar:hover .bar { opacity: .85; }
+.src-row { transition: background-color .15s ease; }
+.src-row:hover { background: var(--paper-hi); }
+.glossary > div { transition: background-color .15s ease; }
+.glossary > div:hover { background: var(--paper-hi); }
+table.bench td.cell:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+table.dt tr[data-drill-row]:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+table.dt tr[data-drill-row] { cursor: pointer; }
+.cmp-bar:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+#temp-entropy:focus-visible, #spread-drill:focus-visible, .fnref:focus-visible {
+  outline: 2px solid var(--focus); outline-offset: 2px;
+}
+/* fnref como alvo de teclado já tem tabindex; reforçar cursor */
+.fnref { cursor: pointer; }
