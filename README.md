@@ -1,5 +1,17 @@
 <div align="center">
 
+# 🌐 PÁGINA INTERATIVA PÚBLICA
+
+## 👉 **[https://llms-interativo.b0-y-z4kr14.workers.dev/](https://llms-interativo.b0-y-z4kr14.workers.dev/)** 👈
+
+*Edição interativa completa — capa animada de 4 estados, 13+ gráficos drillable, comparador, busca e glossário*
+
+</div>
+
+---
+
+<div align="center">
+
 # 📐 A Matemática Inevitável dos LLMs
 ### Da Estocasticidade Lexical à Orquestração Multi-Agente
 
@@ -67,7 +79,7 @@ Este repositório contém dois artefatos gêmeos:
 │   └── assets/
 │       ├── B0.y_Z4kr14-avatar.png   ← avatar do autor
 │       └── gadsden-flag.png         ← bandeira de Gadsden
-├── app/                          ← 🌐 EDIÇÃO INTERATIVA (site)
+├── site/                         ← 🌐 EDIÇÃO INTERATIVA (site)
 │   ├── index.html                ← entrada multi-arquivo
 │   ├── single.html               ← versão autocontida (abre via file://)
 │   ├── css/ · js/ (26 módulos) · assets/
@@ -186,10 +198,10 @@ graph TD
 
 ```bash
 # Opção 1 — site completo
-open app/index.html            # ou sirva: python3 -m http.server -d app 8000
+open site/index.html            # ou sirva: python3 -m http.server -d app 8000
 
 # Opção 2 — versão single-file (funciona offline, via file://)
-open app/single.html
+open site/single.html
 ```
 
 **Snapshots de versão** (rollback sob demanda): `5eb2445` original · `de6f742` marfim fosco · `a84307d` aprimoramento total · `fa55f88` tema escuro fosco · `7ec792c` avatar + créditos do autor.
