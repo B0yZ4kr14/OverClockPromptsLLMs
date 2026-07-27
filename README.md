@@ -6,6 +6,12 @@
 
 *Edição interativa completa — capa animada de 4 estados, 13+ gráficos drillable, comparador, busca e glossário*
 
+# 📰 REVISTA · EDIÇÃO ESPECIAL PDF
+
+## 👉 **[revista/README.md](revista/README.md)** 👈
+
+*25 páginas premium landscape — narrativa, fotografia editorial e os seis números da obra*
+
 </div>
 
 ---
@@ -28,11 +34,13 @@
 
 ## 📖 Sobre o Projeto
 
-Este repositório contém dois artefatos gêmeos:
+Este repositório contém artefatos gêmeos:
 
-1. **📕 A Obra** (`obra_final.md`) — consolidação de 9 manuscritos autorais (+2 figuras) sobre arquitetura de LLMs, o fenômeno *Lost in the Middle*, a praxeologia do chunking, a formalização em grafos de um orquestrador multi-agente e o estudo de caso Kimi K2.5. Três duplicatas exatas foram eliminadas; o português foi unificado para pt-BR; as ~47 fórmulas do manuscrito do orquestrador (perdidas como imagens no original) foram reconstruídas por inferência contextual duplamente auditada e assinaladas com as notas `rec1–rec10`.
+1. **📕 A Obra** (`manuscrito/`) — consolidação de 9 manuscritos autorais (+2 figuras) sobre arquitetura de LLMs, o fenômeno *Lost in the Middle*, a praxeologia do chunking, a formalização em grafos de um orquestrador multi-agente e o estudo de caso Kimi K2.5. Três duplicatas exatas foram eliminadas; o português foi unificado para pt-BR; as ~47 fórmulas do manuscrito do orquestrador (perdidas como imagens no original) foram reconstruídas por inferência contextual duplamente auditada e assinaladas com as notas `rec1–rec10`.
 
-2. **🌐 A Edição Interativa** (`app/`) — o site que dá forma visual à obra: cada número é drillable (valor + base + fonte datada), cada gráfico codifica a estrutura real do fenômeno, e o átomo temático — *a janela de contexto como fita de células de token* — recorre da capa ao painel lateral.
+2. **🌐 A Edição Interativa** (`site/`) — o site que dá forma visual à obra: cada número é drillable (valor + base + fonte datada), cada gráfico codifica a estrutura real do fenômeno, e o átomo temático — *a janela de contexto como fita de células de token* — recorre da capa ao painel lateral.
+
+3. **📰 A Revista** (`revista/`) — a edição especial em PDF: 25 páginas de magazine premium com fotografia editorial, big-numbers e a prova em quatro movimentos.
 
 ---
 
@@ -73,25 +81,23 @@ Este repositório contém dois artefatos gêmeos:
 
 ```
 ├── README.md                     ← este arquivo
-├── obra_final.md                 ← manuscrito consolidado (fonte factual do site)
-├── plan.md                       ← plano de execução do pipeline
+├── revista/
+│   └── README.md                 ← 📰 página da revista (PDF via CDN própria)
+├── manuscrito/                   ← 📕 a obra consolidada em 6 partes + MANIFEST
 ├── docs/
-│   └── assets/
-│       ├── B0.y_Z4kr14-avatar.png   ← avatar do autor
-│       └── gadsden-flag.png         ← bandeira de Gadsden
-├── site/                         ← 🌐 EDIÇÃO INTERATIVA (site)
-│   ├── index.html                ← entrada multi-arquivo
-│   ├── single.html               ← versão autocontida (abre via file://)
-│   ├── css/ · js/ (26 módulos) · assets/
-│   └── tools/ (bundle.py + suítes de QA)
-└── stage1–4_*.md                 ← artefatos do pipeline (mapas, outline, partes)
+│   ├── plan.md                   ← plano de execução do pipeline
+│   └── data_audit/               ← relatório + 11 JSONs da auditoria de dados
+└── site/                         ← 🌐 EDIÇÃO INTERATIVA
+    └── css/                      ← style.css · site.css (tema escuro fosco)
 ```
+
+> **Mídia e binários** (PDF da revista, avatar, bandeira de Gadsden, capa) são servidos via CDN própria — Cloudflare Workers + KV na conta do autor, cache permanente: `llms-interativo.b0-y-z4kr14.workers.dev`.
 
 ---
 
 ## 🧭 Arquitetura do App
 
-> Gerado com o skill `code-to-diagram`. O app é **zero-build vanilla JS**: os 26 módulos são IIFEs carregados por `<script>` em ordem — sem imports ES — e comunicam-se por **globais compartilhadas** (`window.RPT`, `window.U`, `window.SOURCES`, `window.FOOTNOTES`). SVGs em [`docs/diagrams/`](docs/diagrams/).
+> Gerado com o skill `code-to-diagram`. O app é **zero-build vanilla JS**: os 26 módulos são IIFEs carregados por `<script>` em ordem — sem imports ES — e comunicam-se por **globais compartilhadas** (`window.RPT`, `window.U`, `window.SOURCES`, `window.FOOTNOTES`).
 
 ### Arquitetura de módulos
 
@@ -173,36 +179,13 @@ flowchart TD
   IDLE -->|hash inicial| DEEP["deeplink rola ao alvo<br/>re-âncora após lazy-load"]
 ```
 
-### Hierarquia de diretórios
-
-```mermaid
-graph TD
-  app["app/"]
-  assets["assets/<br/>fig2 · fig4 · avatar (2)"]
-  css["css/<br/>style.css · site.css · fonts.css"]
-  js["js/<br/>26 módulos vanilla IIFE"]
-  single["single.html<br/>bundle autocontido 914KB"]
-  idx["index.html"]
-  tools["tools/<br/>bundle.py + suítes QA"]
-  app --> idx
-  app --> single
-  app --> assets
-  app --> css
-  app --> js
-  app --> tools
-```
-
 ---
 
 ## 🚀 Como Visualizar
 
-```bash
-# Opção 1 — site completo
-open site/index.html            # ou sirva: python3 -m http.server -d app 8000
-
-# Opção 2 — versão single-file (funciona offline, via file://)
-open site/single.html
-```
+- **Site (público):** https://llms-interativo.b0-y-z4kr14.workers.dev/
+- **Revista (PDF público):** https://llms-interativo.b0-y-z4kr14.workers.dev/revista.pdf
+- **Local:** `open site/index.html` ou a versão autocontida `site/single.html` (via file://)
 
 **Snapshots de versão** (rollback sob demanda): `5eb2445` original · `de6f742` marfim fosco · `a84307d` aprimoramento total · `fa55f88` tema escuro fosco · `7ec792c` avatar + créditos do autor.
 
@@ -227,7 +210,6 @@ open site/single.html
 - ✅ `node --check` em 26/26 módulos JS · `document.fonts.check('16px et-book') === true`
 - ✅ Contraste WCAG medido par a par (13,6:1 principal · 6,4:1 azul · 4,6:1 vermelho)
 - ✅ QA adversarial independente com falsificação (pixel-diff, teclado sintético, reduced-motion emulado)
-- ✅ Todo número do site rastreável até `obra_final.md` e às âncoras K1–K30
 - ✅ **Auditoria de dados** (skill `dataset-quality-audit`): 11 datasets auditados — **média 97,2/100 (A+)**; os 2 graus B são padrões deliberados de fidelidade às fontes (nulos = "não avaliado"; `*` = marca do fabricante), não defeitos → [relatório completo](docs/data_audit/RELATORIO_AUDITORIA_DADOS.md)
 
 ---
@@ -239,7 +221,7 @@ open site/single.html
 
 ### ⚔️ DECLARAÇÃO DE SOBERANIA INTELECTUAL
 
-<img src="docs/assets/B0.y_Z4kr14-avatar.png" alt="B0.y_Z4kr14 Avatar" width="300">
+<img src="https://llms-interativo.b0-y-z4kr14.workers.dev/assets/avatar_b0y.jpeg" alt="B0.y_Z4kr14 Avatar" width="300">
 
 </div>
 
@@ -271,7 +253,7 @@ Diferente de bens tangíveis, **copiar software não priva o autor original** do
 
 <div align="center">
 
-<img src="docs/assets/gadsden-flag.png" alt="Gadsden Flag - Don't Tread On Me" width="400">
+<img src="https://llms-interativo.b0-y-z4kr14.workers.dev/assets/gadsden_flag.jpeg" alt="Gadsden Flag - Don't Tread On Me" width="400">
 
 **🐍 DON'T TREAD ON ME 🐍**
 
@@ -289,7 +271,7 @@ Este software é liberado ao **DOMÍNIO PÚBLICO** sem quaisquer restrições:
 
 <div align="center">
 
-<img src="docs/assets/B0.y_Z4kr14-avatar.png" alt="B0.y_Z4kr14" width="200">
+<img src="https://llms-interativo.b0-y-z4kr14.workers.dev/assets/avatar_b0y.jpeg" alt="B0.y_Z4kr14" width="200">
 
 ### **B0.y_Z4kr14**
 
@@ -326,7 +308,7 @@ Este software é liberado ao **DOMÍNIO PÚBLICO** sem quaisquer restrições:
 
 <div align="center">
 
-### 🏴 Desenvolvido com  🔥<img width="30" height="46" alt="image" src="https://github.com/user-attachments/assets/e313988f-35ba-406f-bb5f-2c0dd1bc319c" />🔥  e Liberdade
+### 🏴 Desenvolvido com  🔥🔥  e Liberdade
 
 **A Matemática Inevitável dos LLMs** © 2026 B0.y_Z4kr14 · Domínio Público Absoluto
 
